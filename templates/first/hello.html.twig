@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+ {{ include('fragments/hello.html.twig', {flen: 'farah'}) }}
+
+ {{ render(controller('App\\Controller\\FirstController::sayHello2'))}}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} / Hello
+{% endblock %}

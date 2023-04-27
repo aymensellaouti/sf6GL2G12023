@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Todo{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+        {% for nameTodo, contentTodo in app.session.get('todos')  %}
+            <tr class="
+                {% if loop.index is odd %}
+                    table-warning
+                {% else %}
+                    table-danger
+                {% endif %}
+            ">
+                <td>{{ nameTodo }}</td>
+                <td>{{ contentTodo }}</td>
+                <td><a href="{{ path('app_todo_delete', {name: nameTodo}) }}"><i class="bi bi-archive-fill"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
